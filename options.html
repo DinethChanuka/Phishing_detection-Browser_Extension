@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Email Guard Settings</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f0f2f5; margin: 0; padding: 24px; }
+    .container { max-width: 600px; margin: 0 auto; }
+    .card { background: white; border-radius: 24px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    h2 { margin-top: 0; }
+    label { display: block; margin: 16px 0 8px; font-weight: 500; }
+    select, input { width: 100%; padding: 10px; border-radius: 12px; border: 1px solid #ccc; font-size: 14px; }
+    button { background: #1a73e8; color: white; border: none; padding: 10px 20px; border-radius: 40px; cursor: pointer; margin-top: 16px; font-weight: 500; margin-right: 8px; }
+    .danger-btn { background: #e53935; }
+    .list-item { background: #f8f9fa; padding: 8px 12px; margin: 6px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .remove-btn { background: none; color: #e53935; padding: 4px 8px; margin: 0; font-size: 18px; line-height: 1; }
+    .checkbox-label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    input[type="checkbox"] { width: auto; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <h2>⚙️ Protection Settings</h2>
+    <label>Sensitivity Level</label>
+    <select id="sensitivity">
+      <option value="low">Low (warn only red threats)</option>
+      <option value="medium" selected>Medium (red + yellow)</option>
+      <option value="high">High (alert on all suspicious)</option>
+    </select>
+    <label class="checkbox-label">
+      <input type="checkbox" id="showLabels" checked> Show risk labels on email rows
+    </label>
+    <button id="saveSettings">Save Settings</button>
+    <button id="clearCache" class="danger-btn">Clear Threat Cache</button>
+  </div>
+  <div class="card">
+    <h2>✅ Domain Whitelist (safe)</h2>
+    <div id="whitelistContainer"></div>
+    <input type="text" id="whitelistInput" placeholder="example.com">
+    <button id="addWhitelist">Add to Whitelist</button>
+  </div>
+  <div class="card">
+    <h2>🚫 Domain Blacklist (block)</h2>
+    <div id="blacklistContainer"></div>
+    <input type="text" id="blacklistInput" placeholder="malicious-site.com">
+    <button id="addBlacklist">Add to Blacklist</button>
+  </div>
+</div>
+<script src="options.js"></script>
+</body>
+</html>

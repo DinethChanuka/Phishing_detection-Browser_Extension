@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Email Guard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f0f2f5;
+      width: 320px;
+      min-height: 200px;
+    }
+    .header {
+      background: linear-gradient(135deg, #1a73e8, #0d47a1);
+      color: white;
+      padding: 16px 18px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-icon { font-size: 22px; }
+    .header-title { font-size: 15px; font-weight: 700; }
+    .header-sub { font-size: 11px; opacity: 0.8; }
+    .status-bar {
+      margin: 12px 14px 0;
+      padding: 8px 14px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+    .status-bar.warn {
+      background: #fff3e0;
+      color: #e65100;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 12px 14px 0;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 14px;
+      padding: 10px 8px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .stat-num { font-size: 22px; font-weight: 800; line-height: 1; }
+    .stat-label { font-size: 10px; font-weight: 600; margin-top: 3px; text-transform: uppercase; opacity: 0.7; }
+    .stat-card.danger .stat-num { color: #e53935; }
+    .stat-card.warn .stat-num { color: #fb8c00; }
+    .stat-card.safe .stat-num { color: #43a047; }
+    .total-row {
+      margin: 8px 14px 0;
+      background: white;
+      border-radius: 12px;
+      padding: 8px 14px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      color: #555;
+    }
+    .total-row span:last-child { font-weight: 700; color: #222; }
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      margin: 12px 14px 14px;
+    }
+    button {
+      flex: 1;
+      border: none;
+      border-radius: 40px;
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    button:active { transform: scale(0.97); }
+    #scanBtn { background: #1a73e8; color: white; }
+    #optionsBtn { background: #f5f5f5; color: #333; }
+    #scanBtn:hover { opacity: 0.9; }
+    #optionsBtn:hover { background: #e8e8e8; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-icon">🛡️</div>
+    <div>
+      <div class="header-title">Email Security Guard</div>
+      <div class="header-sub">AI-powered threat detection</div>
+    </div>
+  </div>
+  <div class="status-bar" id="statusMsg">⏳ Checking connection…</div>
+  <div class="stats-grid">
+    <div class="stat-card danger"><div class="stat-num" id="redCount">—</div><div class="stat-label">🚫 Danger</div></div>
+    <div class="stat-card warn"><div class="stat-num" id="yellowCount">—</div><div class="stat-label">⚠️ Suspicious</div></div>
+    <div class="stat-card safe"><div class="stat-num" id="greenCount">—</div><div class="stat-label">✅ Safe</div></div>
+  </div>
+  <div class="total-row"><span>Total emails analysed</span><span id="totalCount">—</span></div>
+  <div class="btn-row">
+    <button id="scanBtn">🔍 Scan Now</button>
+    <button id="optionsBtn">⚙️ Settings</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
